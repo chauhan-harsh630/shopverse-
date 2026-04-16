@@ -1,7 +1,7 @@
 # shopverse-
 # 🛒 ShopVerse — MERN E-commerce Platform
 
-> **"A shopping universe where every category lives under one roof."**
+> **"Curated essentials for modern life. Limitless choices, refined design."**
 > Built from scratch. Shipped smart. Designed to scale.
 
 ---

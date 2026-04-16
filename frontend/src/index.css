@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary-light: #d1fae5;
+  --color-primary: #34d399;
+  --color-primary-dark: #059669;
+  --color-background: #f9fafb;
+  --color-surface: #ffffff;
+  --color-text-main: #1f2937;
+  --color-text-muted: #6b7280;
+  --color-border: #e5e7eb;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: var(--color-text-main);
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary text-white px-6 py-2 rounded-md font-medium transition-all hover:bg-primary-dark hover:shadow-lg hover:-translate-y-0.5 active:scale-95 duration-300;
+  }
+  .btn-outline {
+    @apply border border-primary text-primary px-6 py-2 rounded-md font-medium transition-all hover:bg-primary-light hover:text-primary-dark hover:shadow-md hover:-translate-y-0.5 active:scale-95 duration-300;
+  }
+  .card {
+    @apply bg-surface border border-border rounded-xl shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300;
+  }
+  .input-field {
+    @apply w-full px-4 py-3 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all shadow-sm;
+  }
+}
+
+@layer utilities {
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  .animate-pulse-fast {
+    animation: pulseFast 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseFast {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.skeleton {
+  @apply bg-gray-200 animate-pulse-fast rounded-md;
+}

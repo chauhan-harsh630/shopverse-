@@ -1,11 +1,6 @@
-import mongoose from 'mongoose';
-import dotenv from 'dotenv';
-import Product from './models/Product.js';
-
-dotenv.config();
-
-const sampleProducts = [
+export const dummyProducts = [
   {
+    _id: '1',
     name: 'Minimalist White Sneakers',
     category: 'Clothing',
     subCategory: 'Shoes',
@@ -15,6 +10,7 @@ const sampleProducts = [
     stock: 15
   },
   {
+    _id: '2',
     name: 'Wireless Noise Cancelling Headphones',
     category: 'Electronics',
     subCategory: 'Audio',
@@ -24,6 +20,7 @@ const sampleProducts = [
     stock: 8
   },
   {
+    _id: '3',
     name: 'Ceramic Pour-Over Coffee Maker',
     category: 'Home',
     subCategory: 'Kitchen',
@@ -33,6 +30,7 @@ const sampleProducts = [
     stock: 20
   },
   {
+    _id: '4',
     name: 'Cotton Essential T-Shirt',
     category: 'Clothing',
     subCategory: 'T-Shirts',
@@ -42,6 +40,7 @@ const sampleProducts = [
     stock: 50
   },
   {
+    _id: '5',
     name: 'Botanical Face Serum',
     category: 'Beauty',
     subCategory: 'Skincare',
@@ -51,6 +50,7 @@ const sampleProducts = [
     stock: 12
   },
   {
+    _id: '6',
     name: 'Modern Table Lamp',
     category: 'Home',
     subCategory: 'Decor',
@@ -58,64 +58,5 @@ const sampleProducts = [
     description: 'A brushed steel and frosted glass table lamp that provides warm, ambient lighting to any workspace or bedside table.',
     image: 'https://images.unsplash.com/photo-1507473885765-e6ed057f782c?q=80&w=1374&auto=format&fit=crop',
     stock: 4
-  },
-  {
-    name: 'MacBook Pro 14"',
-    category: 'Electronics',
-    subCategory: 'Laptops',
-    price: 1999.99,
-    description: 'Apple M3 Pro chip, 18GB RAM, 512GB SSD. Crystal clean silver finish.',
-    image: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=1400&auto=format&fit=crop',
-    stock: 10
-  },
-  {
-    name: 'Canvas Tote Bag',
-    category: 'Accessories',
-    subCategory: 'Bags',
-    price: 18.00,
-    description: 'Durable eco-friendly canvas tote. Perfect for groceries or everyday carry.',
-    image: 'https://images.unsplash.com/photo-1597339794354-946788647565?q=80&w=1400&auto=format&fit=crop',
-    stock: 100
-  },
-  {
-    name: 'Nordic Lounge Chair',
-    category: 'Home',
-    subCategory: 'Furniture',
-    price: 499.00,
-    description: 'Stunning minimalist design crafted from sustainable ash wood and gray wool fabric.',
-    image: 'https://images.unsplash.com/photo-1592078615290-033ee584e267?q=80&w=1400&auto=format&fit=crop',
-    stock: 3
-  },
-  {
-    name: 'Matte Black Water Bottle',
-    category: 'Accessories',
-    subCategory: 'Essentials',
-    price: 32.00,
-    description: 'Vacuum insulated double wall stainless steel bottle. Keeps drinks cold for 24 hours.',
-    image: 'https://images.unsplash.com/photo-1602143407151-7111542de6e8?q=80&w=1400&auto=format&fit=crop',
-    stock: 45
   }
 ];
-
-mongoose
-  .connect(process.env.MONGO_URI)
-  .then(async () => {
-    console.log('MongoDB Connected successfully for Seeding...');
-    
-    // Clear old products
-    await Product.deleteMany({});
-    console.log('Old Products cleared');
-
-    // Insert new products
-    const createdProducts = await Product.insertMany(sampleProducts);
-    console.log('Sample Products Added:');
-    
-    // Print out the IDs so the user can copy them for Cart testing!
-    createdProducts.forEach(p => console.log(`- ${p.name}: ID = ${p._id}`));
-
-    process.exit();
-  })
-  .catch((err) => {
-    console.log('Error: ', err.message);
-    process.exit(1);
-  });
